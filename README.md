@@ -5,6 +5,8 @@ Certain models of laptop with LCD display has a very low frequency PWM based bri
 This Linux script adjusts (increases) backlight PWM frequency on Intel iGPU laptops. It adds a script to set LCD backlight PWM frequency to 1.2 KHz on kernel image. The setting gets applied before the i915 display driver is loaded so it is persistent across sleep / resume cycle and brightness scaling in desktop environment (Gnome, KDE tested) is still correct with new frequency.
 
 ### Environment
+Secure Boot must be **disabled** for now. Otherwise the intel_reg tool won't be able to read nor write to memory mapped registers. You will get couldn't map MMIO error if Secure Boot is enabled.
+
 The script is made specifically for Fedora Linux (tested on 42, 43) and depends on those packages:
 > dracut
 > igt-gpu-tools
